@@ -16,7 +16,7 @@ const questions = [
     message: "Please provide a description of your project:",
     },
     {
-    type: "input",
+    type: "editor",
     name: "installation",
     message: "Please provide installation instructions for your project:",
     },
@@ -32,7 +32,7 @@ const questions = [
     choices: ["MIT", "Apache 2.0", "GPL 3.0", "BSD 3", "None"],
     },
     {
-    type: "input",
+    type: "editor",
     name: "contributing",
     message: "Please provide contribution guidelines for your project:",
     },
