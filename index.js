@@ -55,12 +55,21 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
+    try {
+        const fd = fs.openSync(fileName, "w");
+        fs.writeSync(fd, data);
+        fs.closeSync(fd);
+        console.log(`Generated ${fileName} successfully!`);
+    } catch (err) {
+        console.error(`Error writing to ${fileName}: ${err.message}`);
+    }
 }
 
 // function to initialize program
 function init() {
     inquirer.prompt(questions).then((answers) => {
         const markdown = generateMarkdown(answers);
+        writeToFile("README.md", markdown);
         console.log("README.md generated successfully!");
     });
 }
