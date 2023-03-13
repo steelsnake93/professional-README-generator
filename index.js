@@ -59,7 +59,10 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 function init() {
-
+    inquirer.prompt(questions).then((answers) => {
+        const markdown = generateMarkdown(answers);
+        console.log("README.md generated successfully!");
+    });
 }
 
 // function call to initialize program
