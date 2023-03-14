@@ -8,8 +8,30 @@ function generateMarkdown(data) {
     return `${index + 1}. ${line}`;
   }).join('\n');
 
+  // generate badge URL based on the selected license
+  let licenseBadge = '';
+  switch (data.license) {
+    case 'MIT':
+      licenseBadge = '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)';
+      break;
+    case 'Apache 2.0':
+      licenseBadge = '![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)';
+      break;
+    case 'GPL 3.0':
+      licenseBadge = '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)';
+      break;
+    case 'BSD 3':
+      licenseBadge = '![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)';
+      break;
+    default:
+      licenseBadge = '';
+      break;
+  }
+
   return `# ${data.title}
-  ## Description
+  ${licenseBadge}
+
+## Description
 
 ${data.description}
 
@@ -23,6 +45,8 @@ ${data.description}
 - [Questions](#questions)
 
 ## Installation
+
+To install this project, follow these steps:
 
 ${installationSteps}
 

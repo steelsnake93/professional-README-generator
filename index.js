@@ -30,6 +30,7 @@ const questions = [
     name: "license",
     message: "Which license would you like to use for your project?",
     choices: ["MIT", "Apache 2.0", "GPL 3.0", "BSD 3", "None"],
+    default: "None"
     },
     {
     type: "editor",
@@ -50,6 +51,14 @@ const questions = [
     type: "input",
     name: "email",
     message: "What is your email address?",
+    validate: function(input) {
+            const isValidEmail = /\S+@\S+\.\S+/.test(input);
+            if (isValidEmail) {
+                return true;
+            } else {
+                return "Please enter a valid email address";
+            }
+        }
     },
 ];
 
