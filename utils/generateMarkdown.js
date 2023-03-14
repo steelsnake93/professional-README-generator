@@ -1,10 +1,16 @@
 // function to generate markdown for README
 function generateMarkdown(data) {
-  const installationSteps = data.installation.split('\n').map((line, index) => {
+  const installationSteps = data.installation
+  .split('\n')
+  .filter((line) => line.trim() !== '')
+  .map((line, index) => {
     return `${index + 1}. ${line}`;
   }).join('\n');
 
-  const contributingSteps = data.contributing.split('\n').map((line, index) => {
+  const contributingSteps = data.contributing
+  .split('\n')
+  .filter((line) => line.trim() !== '')
+  .map((line, index) => {
     return `${index + 1}. ${line}`;
   }).join('\n');
 
